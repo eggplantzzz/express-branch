@@ -1,10 +1,10 @@
 const express = require('express');
 const branch = express();
 
-branch.get('/first', (req, res, next) => {
+branch.get('/branch/first', (req, res, next) => {
   res.send('The first route.');
 });
-branch.get('/second', (req, res, next) => {
+branch.get('/branch/second', (req, res, next) => {
   res.send('This is the second route.');
 });
 branch.get('*', (req, res, next) => {
