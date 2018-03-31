@@ -1,25 +1,24 @@
 const express = require('express');
-const branch = express();
+const app = express();
 
-branch.get('/first', (req, res, next) => {
+app.get('/first', (req, res, next) => {
   const { originalUrl, baseUrl, path } = req;
-  console.log('the request url is ---> ' + originalUrl);
-  console.log('the base url is ---> ' + baseUrl);
-  console.log('the path is ---> ' + path);
+  console.log('The request url is ---> ' + originalUrl);
+  console.log('The base url is ---> ' + baseUrl);
+  console.log('The path is ---> ' + path);
   res.send('The first route.');
 });
-branch.get('/second', (req, res, next) => {
-  const { originalUrl } = req;
-  console.log('the request url is ---> ' + originalUrl);
+app.get('/second', (req, res, next) => {
+  const { originalUrl, baseUrl, path } = req;
+  console.log('The request url is ---> ' + originalUrl);
+  console.log('The base url is ---> ' + baseUrl);
+  console.log('The path is ---> ' + path);
   res.send('This is the second route.');
 });
-branch.get('*', (req, res, next) => {
-  const { originalUrl } = req;
-  console.log('the request url is ---> ' + originalUrl);
+app.get('*', (req, res, next) => {
   next({ status: 404 });
 });
-branch.use((err, req, res, next) => {
+app.use((err, req, res, next) => {
   res.send('Error handling.');
 });
-module.exports = branch;
-// branch.listen(3000, () => console.log('other thing listening'));
+module.exports = app;
