@@ -2,9 +2,13 @@ const express = require('express');
 const branch = express();
 
 branch.get('/first', (req, res, next) => {
+  const { originalUrl } = req;
+  console.log('the request url is ---> ' + originalUrl);
   res.send('The first route.');
 });
 branch.get('/second', (req, res, next) => {
+  const { originalUrl } = req;
+  console.log('the request url is ---> ' + originalUrl);
   res.send('This is the second route.');
 });
 branch.get('*', (req, res, next) => {
