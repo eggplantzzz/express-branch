@@ -13,3 +13,4 @@ app.get('*', (req, res, next) => {
 app.use((err, req, res, next) => {
   res.send('Error handling.');
 });
+module.exports = app;
