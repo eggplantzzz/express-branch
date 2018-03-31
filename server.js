@@ -2,8 +2,10 @@ const express = require('express');
 const branch = express();
 
 branch.get('/first', (req, res, next) => {
-  const { originalUrl } = req;
+  const { originalUrl, baseUrl, path } = req;
   console.log('the request url is ---> ' + originalUrl);
+  console.log('the base url is ---> ' + baseUrl);
+  console.log('the path is ---> ' + path);
   res.send('The first route.');
 });
 branch.get('/second', (req, res, next) => {
